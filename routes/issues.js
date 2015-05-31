@@ -2,24 +2,6 @@ var mongodb = require('mongodb');
 var ObjectID = mongodb.ObjectID;
 var util=require('util');
 
-var ISSUE_COLLECTION="issues"
-
-
-
-
-
-exports.createCollection = function(req, res, db) {
-    console.log('Create collection: '+req.params.collection)
-    db.createCollection(req.params.collection,
-                        function(err, data){
-                            if (err){
-                                console.log(err);
-                                res.send(500, err);
-                            } else {
-                                res.send(data[0]);
-                            }
-                        });
-}
 
 exports.deleteCollection = function(req, res, db) {
     console.log('DELETE collection '+req.params.collection)
@@ -90,7 +72,7 @@ exports.updateIssue = function(req,res,db) {
     db.collection(req.params.collection)
         .update({ _id:  ObjectID(req.params.id)}, req.body, {}, 
                 function(err) {
-                    res.jsonp({ result: !err });
+                    res.jsonp({ result: err });
                 });
 }
 

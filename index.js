@@ -32,10 +32,6 @@ MongoClient.connect(mongoConnectString+'/test', function(err, db) {
             issues.deleteCollection(req,res,db);
         });
 
-        app.post('/api/:collection/_create', function(req, res) {
-            issues.createCollection(req,res,db);
-        });
-
         app.post('/api/:collection', function(req, res) {
             issues.createIssue(req,res,db);
         });

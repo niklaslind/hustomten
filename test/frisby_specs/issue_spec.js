@@ -6,16 +6,15 @@ var ObjectID = mongodb.ObjectID;
 //---------------- DROP and CREATE collection ------------------------
 
 frisby.create('POST http://127.0.0.1:3000/api/testissue')
-    .post('http://127.0.0.1:3000/api/testissue/_create')
+    .post('http://127.0.0.1:3000/api/testissue')
+    .expectStatus(200)
     .toss();
 
 frisby.create('POST http://127.0.0.1:3000/api/testissue')
     .delete('http://127.0.0.1:3000/api/testissue')
+    .expectStatus(200)
     .toss();
 
-frisby.create('POST http://127.0.0.1:3000/api/testissue')
-    .post('http://127.0.0.1:3000/api/testissue/_create')
-    .toss();
 
 //----------------------------------------
 
